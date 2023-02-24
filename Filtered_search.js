@@ -1,66 +1,49 @@
 <script>
+// These variables define functionality in script
+const type = "FilteringOptions";
+// This number is the element to get
+let number = 0;
 
-//These variables define functionality in script
-//This row is the element type put inside "".
-var type = "FilteringOptions"
-//This number is the element to get
-var number = 0;
+// Below here is the main part of the code. Please don't touch without some understanding of JavaScript.
 
+// Functions
+// Function for hiding element
+function hide() {
+  // Adding elements into array to be hidden
+  const collection = [
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--manufacturers col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--features col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[1] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[11] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[4] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[3] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[6] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[5] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[15] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[12] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[13] col-12 col-sm-6 col-md-4 col-xl-3",
+    "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--price col-12 col-sm-6 col-md-4 col-xl-3"
+  ];
 
-
-//Below here is the main part of the code. Please dont touch without some understanding of javascript.
-
-//Functions
-//Function for hiding element
-		  
-function Hide() {	
-			//Adding elements into array to be hidden. maybe this should be optimized  ¯\_(ツ)_/¯
-		  let collection = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--manufacturers col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--features col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[1] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[11] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[4] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[3] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[6] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[5] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[15] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[12] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[13] col-12 col-sm-6 col-md-4 col-xl-3";
-		  collection.push = "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--price col-12 col-sm-6 col-md-4 col-xl-3";
-		  alert(collection.length);
-		  if (collection.length > 0){
-      for(var i=0; i < collection.length; i++{
-
-
-		  var x = window.getComputedStyle(document.getElementsByClassName(collection[i]), null).display;
-		  
-		  if (x == "none") 
-		  {
-			document.getElementsByClassName(collection[i]).style.display = "block";
-		  }
-
-		  else if (x == "block")
-		  {
-			document.getElementsByClassName(collection[i]).style.display = "none";
-		  }
-		}
-}
+  const elements = document.getElementsByClassName(collection.join(" "));
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.toggle("hidden");
+  }
 }
 
-//Main code loop in a function
-function mainfunction () {
+// Main code loop in a function
+function mainFunction() {
   // Toggle on mobile
-    if (window.innerWidth <= 800) {
-		
-	  //FilteringOptions__heading.click();
-	  Hide();
-	  var Button = document.createElement("BUTTON");
-	  Button.innerHTML = "Show Filters";
-	  Button.onclick = function() {
-		  Hide();
-	  };
-	  var x = document.getElementsByClassName("MainProductList__active-filter-row");
-	  x[0].appendChild(Button);
+  if (window.innerWidth <= 800) {
+    // FilteringOptions__heading.click();
+    hide();
+    const button = document.createElement("button");
+    button.innerHTML = "Show Filters";
+    button.onclick = function() {
+      hide();
+    };
+    const container = document.getElementsByClassName("MainProductList__active-filter-row")[0];
+    container.appendChild(button);
 
 	  
 }
