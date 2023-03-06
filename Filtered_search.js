@@ -1,8 +1,4 @@
 <script>
-// These variables define functionality in script
-const type = "FilteringOptions";
-// This number is the element to get
-let number = 0;
 
 // Below here is the main part of the code. Please don't touch without some understanding of JavaScript.
 
@@ -24,12 +20,23 @@ function hide() {
     "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--extraProperties[13] col-12 col-sm-6 col-md-4 col-xl-3",
     "FilteringOptions__option-wrapper FilteringOptions__option-wrapper--price col-12 col-sm-6 col-md-4 col-xl-3"
   ];
-
   const elements = document.getElementsByClassName(collection.join(" "));
   for (let i = 0; i < elements.length; i++) {
-    elements[i].classList.toggle("hidden");
+	var x = window.getComputedStyle(document.getElementsByClassName(elements[i]), null).display;
+	alert(x);
+
+	if (x == "none") 
+	{
+		document.getElementsByClassName(elements[i]).style.display = "block";
+	}
+
+	else if (x == "block")
+	{
+		document.getElementsByClassName(elements[i]).style.display = "none";
+	}
+    
   }
-}
+};
 
 // Main code loop in a function
 function mainFunction() {
@@ -50,7 +57,7 @@ function mainFunction() {
 }
 
 //Calling main code loop
-setTimeout(mainfunction, 3000);
+setTimeout(mainFunction, 3000);
 
 //Intelectual property of Arttu Mutka
 
